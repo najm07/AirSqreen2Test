@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Airsqreen.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airsqreen.Controllers
 {
@@ -32,6 +33,18 @@ namespace Airsqreen.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [AllowAnonymous]
+        public IActionResult Payment()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Billing()
+        {
+            return View();
         }
     }
 }
